@@ -1,0 +1,74 @@
+<div>
+  <md-toolbar class="md-whiteframe-z2">
+    <div class="md-toolbar-tools">
+      <md-button class="md-button md-icon-button" ng-href="https://www.instagram.com/{{user.username}}/" target="_blank">
+        <md-icon>
+            <div id="profile_pic" style="background-image: url({{user.profile_picture}});"></div>
+        </md-icon>
+      </md-button>
+      <h2 flex>
+        <span>{{user.username}}</span>
+      </h2>
+      <div id="sortByWrap">
+        Sort By:
+        <i class="glyphicon glyphicon-time" data-ng-click="sortMediasBy('created_time')"></i>
+        <i class="glyphicon glyphicon-heart" data-ng-click="sortMediasBy('likes')"></i>
+        <i class="glyphicon glyphicon-comment" data-ng-click="sortMediasBy('comments')"></i>
+      </div>
+    </div>
+  </md-toolbar>
+
+  <md-content id="content-scroller">
+    <div>
+        <div
+             class="cards-wrap"
+             angular-grid="medias"
+             ag-grid-width="300"
+             ag-gutter-size="12"
+             ag-id="shots"
+             ag-infinite-scroll="loadMoreMedias()"
+             ag-infiniteScrollDistance="70"
+             >
+          <div class="card" ng-repeat="media in medias track by $index">
+            <div ng-if="media.type == 'image'" class="img" style="background-image: url({{media.media_url}});"></div>
+            <div ng-if="media.type == 'video'" class="video">
+              <videogular data-ng-init="setVideoSrc($index, media.media_url)">
+                <vg-media vg-src="videoSource[$index]" vg-type="video"></vg-media>
+                <vg-controls>
+                  <vg-play-pause-button></vg-play-pause-button>
+                  <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+                  <vg-scrub-bar>
+                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                  </vg-scrub-bar>
+                  <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+                  <vg-volume>
+                    <vg-mute-button></vg-mute-button>
+                    <vg-volume-bar></vg-volume-bar>
+                  </vg-volume>
+                  <vg-fullscreen-button></vg-fullscreen-button>
+                </vg-controls>
+ 
+                <vg-overlay-play></vg-overlay-play>
+                <vg-poster vg-url='media.video_poster'></vg-poster>
+              </videogular>
+            </div>
+            <div class="inside">
+              <div ng-if="media.caption" class="caption" ng-bind-html="linkify(media.caption) | trustAsHtml"></div>
+              <div class="description">{{media.time_ago}} ago</div>
+              <div class="likes-comments-wrap">
+                <div class="count">
+                  <i class="glyphicon glyphicon-heart"></i> {{media.likes}}
+                </div>
+                <div class="count">
+                  <i class="glyphicon glyphicon-comment"></i> {{media.comments}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="loading-more-indicator" ng-show="vm.loadingMore">
+          <md-progress-circular md-mode="indeterminate" md-diameter="64" class="progress-swatch"></md-progress-circular>
+        </div>
+    </div>
+  </md-content>
+</div>

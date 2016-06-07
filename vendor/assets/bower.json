@@ -1,0 +1,23 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "underscore": "latest",
+    "angular": "latest",
+    "angular-sanitize": "latest",
+    "angular-ui-router": "latest",
+    "angular-resource": "latest",
+    "angular-aria": "latest",
+    "angular-animate": "latest",
+    "angulargrid": "latest",
+    "angular-material": "latest",
+    "ngInfiniteScroll": "latest",
+    "videogular": "latest",
+    "videogular-themes-default": "latest",
+    "videogular-controls": "latest",
+    "videogular-buffering": "latest",
+    "videogular-overlay-play": "latest",
+    "videogular-poster": "latest",
+    "videogular-ima-ads": "latest",
+    "videogular-angulartics": "latest"
+  }
+}

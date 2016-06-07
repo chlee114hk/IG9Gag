@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>IG9gag</title>
+  <base href="/">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body data-ng-app="ngIG9gag">
+    <div id="preloader" ng-show='stateIsLoading'>
+      <div class="sk-spinner sk-spinner-wave">
+          <div class="sk-rect1"></div>
+          <div class="sk-rect2"></div>
+          <div class="sk-rect3"></div>
+          <div class="sk-rect4"></div>
+          <div class="sk-rect5"></div>
+      </div>
+    </div>
+    <main id="main" class="main">
+        <div ui-view autoscroll="true" ></div>
+    </main>
+</body>
+</html>

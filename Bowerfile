@@ -1,0 +1,22 @@
+# A sample Bowerfile
+# Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
+
+# asset 'bootstrap'
+asset 'underscore'
+asset 'angular'
+asset 'angular-sanitize'
+asset 'angular-ui-router'
+asset 'angular-resource'
+asset 'angular-aria'
+asset 'angular-animate'
+asset 'angulargrid'
+asset 'angular-material'
+asset 'ngInfiniteScroll'
+asset 'videogular'
+asset 'videogular-themes-default'
+asset 'videogular-controls'
+asset 'videogular-buffering'
+asset 'videogular-overlay-play'
+asset 'videogular-poster'
+asset 'videogular-ima-ads'
+asset 'videogular-angulartics'

@@ -1,0 +1,7 @@
+default:
+  host: localhost
+  port: 6379
+development:
+    host: localhost
+production:
+  host: <%= ENV['REDISCLOUD_URL'] %>

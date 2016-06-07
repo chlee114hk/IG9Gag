@@ -583,12 +583,10 @@
                 if (!leavingElm.length) {
                   resolve();
                 } else {
-                  single(leavingElm[0]).one('webkitTransitionEnd transitionend msTransitionEnd oTransitionEnd', function() {
-                    $timeout(function() {
-                      listElms = getListElms();
-                      resolve();
-                    });
-                  });
+                  $timeout(function() {
+                    listElms = getListElms();
+                    resolve();
+                  }, 1000);
                 }
               });
             }

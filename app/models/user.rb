@@ -13,9 +13,10 @@ class User
     end
 
     def add_media(media_id)
-        medias.push(media_id) if Media.exists?(media_id)
+        puts has_media?(media_id)
+        medias.push(media_id) if Media.exists?(media_id) && !has_media?(media_id)
         # use unshift if you want to add at the begining of list
-        # medias.unshift(media_id) if Media.exists?(media_id)
+        # medias.unshift(media_id) if Media.exists?(media_id) && !medias.exists?(media_id)
     end
 
     # order:  "asc"/"desc"
@@ -26,10 +27,11 @@ class User
         opt[:order] = order
         opt[:by] = "media:*:#{sort_by}"
         opt[:limit] = [from, page_size]
-        p opt[:limit]
+
+        # key for caching search result 
         store_key = "user#{id}_page#{page}_by_#{sort_by}_#{order}"
         opt[:store] = store_key
-        p medias.values
+
         medias.sort(opt)
         # cache result for 5 minutes
         self.redis.expire(store_key, 300)
@@ -56,5 +58,9 @@ class User
         user.username = attributes[:username]
         user.full_name = attributes[:full_name]
         user.profile_picture = attributes[:profile_picture]
+    end
+
+    def has_media?(id)
+        medias.values.include?(id)
     end
 end

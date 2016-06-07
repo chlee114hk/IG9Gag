@@ -4,8 +4,9 @@ class InstagramDataLoader
         JSON.parse(Instagram.user_recent_media(ig_id, {:count => count}).to_json)
     end
 
-    def load_and_store_data(ig_id, count=200)
-        return if User.exists?(ig_id)
+    def load_and_store_data(ig_id, count=200, reload=false)
+
+        return if User.exists?(ig_id) && !reload
 
         @media = get_recent_media(ig_id, count=200)
 

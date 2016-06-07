@@ -23,7 +23,7 @@ ngIG9gag.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', '$
                     ],
                     medias: ['UserService', '$stateParams', '$rootScope'
                         (UserService, $stateParams, $rootScope) ->
-                            new UserService().getMedias($rootScope.demoIGid, 1, "created_time").$promise
+                            new UserService().getMedias($rootScope.demoIGid, 1, "created_time", true).$promise
                     ]
                 },
                 controller: 'UserMediasCtrl'

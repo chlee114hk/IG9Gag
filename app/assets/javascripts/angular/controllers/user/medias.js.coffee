@@ -1,5 +1,5 @@
 ngIG9gag.controller("UserMediasCtrl", 
-["$scope", "$sce", "UserService", "medias", 'user'
+["$scope", "$sce", "UserService", "medias", "user"
 ($scope, $sce, UserService, medias, user) ->
     vm = this;
     $scope.medias = medias.medias
@@ -17,14 +17,16 @@ ngIG9gag.controller("UserMediasCtrl",
         vm.page++
         vm.loadingMore = true
         vm.userService.getMedias(
-            $scope.user.id, vm.page, $scope.sort_by,
+            $scope.user.id, vm.page, $scope.sort_by, false,
             (data) -> 
                 if !reload
                     mediasTmp = angular.copy($scope.medias)
                     mediasTmp = mediasTmp.concat(data.medias)
                     $scope.medias = mediasTmp
                 else
-                    $scope.medias = data.medias
+                    length = $scope.medias.length
+                    $scope.medias = $scope.medias.concat(data.medias)
+                    $scope.medias.splice(0, length)
 
                 vm.loadingMore = false
             () ->
@@ -42,5 +44,5 @@ ngIG9gag.controller("UserMediasCtrl",
         $scope.videoSource[$index][0] = {}
         $scope.videoSource[$index][0].src = $sce.trustAsResourceUrl(videoUrl)
         $scope.videoSource[$index][0].type = "video/mp4"
-        console.log($scope.videoSource[$index])
+
 ])

@@ -24,9 +24,9 @@ ngIG9gag.factory 'UserService', [ '$resource', '$stateParams', ($resource, $stat
                 (response) -> errorHandler?(response)
             )
 
-        getMedias: (id, page=1, sort_by="created_time", successHandler, errorHandler) ->
+        getMedias: (id, page=1, sort_by="created_time", reload=false, successHandler, errorHandler) ->
             new @service.medias(
-                {id: id, page: page, sort_by: sort_by},
+                {id: id, page: page, sort_by: sort_by, reload},
                 (media, response) -> successHandler?(media, response),
                 (response) -> errorHandler?(response)
             )

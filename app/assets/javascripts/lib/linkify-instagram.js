@@ -109,7 +109,7 @@
         text = htmlEscape(text);
 
         // Hashtags
-        var hashtags = text.match(/[#]\w+/g);
+        var hashtags = text.match(/[#](.+?)(?=[\s.,:,]|$)/g);
         if (hashtags) {
             hashtags.forEach(function(ht) {
                 text = text.replace(ht, hashtag(ht, htTemplate));
@@ -117,7 +117,7 @@
         };
 
         // Usernames
-        var usernames = text.match(/[@]\w+/g);
+        var usernames = text.match(/[@](.+?)(?=[\s.,:,]|$)/g);
         if (usernames) {
             usernames.forEach(function(un) {
                 text = text.replace(un, username(un, unTemplate));

@@ -13,7 +13,6 @@ class User
     end
 
     def add_media(media_id)
-        puts has_media?(media_id)
         medias.push(media_id) if Media.exists?(media_id) && !has_media?(media_id)
         # use unshift if you want to add at the begining of list
         # medias.unshift(media_id) if Media.exists?(media_id) && !medias.exists?(media_id)

@@ -63,22 +63,22 @@ There is two models in this project: User and Media
 
 User:
 
-key user:{id}:username
-key user:{id}:full_name
-key user:{id}:profile_picture
-list user:{id}:medias
+- key user:{id}:username
+- key user:{id}:full_name
+- key user:{id}:profile_picture
+- list user:{id}:medias
 
 Media:
 
-key media:{id}:media_url
-key media:{id}:type
-key media:{id}:likes
-key media:{id}:comments
-key media:{id}:created_time
-key media:{id}:link
-key media:{id}:caption
-key media:{id}:video_poster
-list media:{id}:tags
+- key media:{id}:media_url
+- key media:{id}:type
+- key media:{id}:likes
+- key media:{id}:comments
+- key media:{id}:created_time
+- key media:{id}:link
+- key media:{id}:caption
+- key media:{id}:video_poster
+- list media:{id}:tags
 
 A key user{id}_page{page}_by_{sort_by}_{order} is used to cache search result of a page for 5 minutes
 

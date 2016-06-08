@@ -46,7 +46,7 @@ Precompile asset
 
     rake assets:precompile RAILS_ENV=development
 
-Start Redis server at at 127.0.0.1 port 6379 (Default)
+Start Redis server at 127.0.0.1 port 6379 (Default) (You can config it at Redis.yml if you want to use other ports)
 
     redis-server
 

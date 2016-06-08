@@ -59,7 +59,7 @@ Now visit [http://127.0.0.1:3000]
 Data structure
 ==============
 
-There is teo models in this project: User and Media
+There is two models in this project: User and Media
 
 User:
 

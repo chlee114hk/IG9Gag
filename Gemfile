@@ -58,3 +58,4 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'angular-rails-templates'
 
 gem 'rails_12factor', group: :production
+gem  'passenger', group: :production

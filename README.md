@@ -81,3 +81,5 @@ key media:{id}:video_poster
 list media:{id}:tags
 
 A key user{id}_page{page}_by_{sort_by}_{order} is used to cache search result of a page for 5 minutes
+
+P.S. I can use HSET or MHSET command of redis to set the fields to user or media key to avoid lots of key generated, and use Set instead of list to store medias of user to take advantage of uniqueness handling of redia. But I may need extra low level implementation with Redis, since I am now using ruby to implementation a high level ORM for my model and it is quite easy to check for uniqueness in ruby.

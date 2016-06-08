@@ -1,3 +1,5 @@
+ruby '2.2.1'
+
 source 'https://rubygems.org'
 
 
@@ -54,3 +56,5 @@ gem 'bower-rails'
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'angular-rails-templates'
+
+gem 'rails_12factor', group: :production

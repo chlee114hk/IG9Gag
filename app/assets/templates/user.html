@@ -55,7 +55,7 @@
             </div>
             <div class="inside">
               <div ng-if="media.caption" class="caption" ng-bind-html="linkify(media.caption) | trustAsHtml"></div>
-              <div class="description">{{media.time_ago}} ago</div>
+              <div class="description"><a ng-href="{{media.link}}" target="_blank">{{media.time_ago}} ago</a></div>
               <div class="likes-comments-wrap">
                 <div class="count">
                   <i class="glyphicon glyphicon-heart"></i> {{media.likes}}

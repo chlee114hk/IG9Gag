@@ -15,6 +15,8 @@ Each post display
 
 ­­- Like and comment count
 
+Demo link: http://ig9gag.herokuapp.com/
+
 Frameworks
 ==========
 

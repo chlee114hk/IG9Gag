@@ -1,5 +1,6 @@
 ngIG9gag.filter(
     'trustAsResourceUrl', 
-    ($sce) ->
+    ["$sce", ($sce) ->
         $sce.trustAsResourceUrl
+    ]
 )

@@ -24,7 +24,8 @@ class User
         from = (page.to_i-1)*page_size.to_i
         opt = {}
         opt[:order] = order
-        opt[:by] = "media:*:#{sort_by}"
+        opt[:by] = "media:*:score"
+        #opt[:by] = "media:*:#{sort_by}"
         opt[:limit] = [from, page_size]
 
         # key for caching search result 
@@ -57,6 +58,14 @@ class User
         user.username = attributes[:username]
         user.full_name = attributes[:full_name]
         user.profile_picture = attributes[:profile_picture]
+    end
+
+    def score_medias(field)
+        medias.values.each do |m|
+            media = Media.find(m)
+            score = Redis::Value.new("media:#{m}:score")
+            score.value = media.pinned.value.to_i * 10000000000 + media.send(field).value.to_i
+        end
     end
 
     def has_media?(id)

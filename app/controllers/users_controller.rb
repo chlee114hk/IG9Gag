@@ -17,6 +17,8 @@ class UsersController < ApplicationController
         sort_by = params[:sort_by] || "created_time"
         order = params[:order] || "desc"
 
+        @user.score_medias(sort_by)
+
         @medias_count = @user.medias.length
         @medias = @user.get_medias(page, page_size, sort_by, order)
     end

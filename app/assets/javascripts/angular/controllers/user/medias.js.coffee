@@ -1,6 +1,6 @@
 ngIG9gag.controller("UserMediasCtrl", 
-["$scope", "$sce", "UserService", "medias", "user"
-($scope, $sce, UserService, medias, user) ->
+["$scope", "$sce", "UserService", "MediaService", "medias", "user"
+($scope, $sce, UserService, MediaService, medias, user) ->
     vm = this;
     $scope.medias = medias.medias
     $scope.user = user
@@ -11,6 +11,7 @@ ngIG9gag.controller("UserMediasCtrl",
     vm.page = 1
     vm.loadingMore = false
     vm.userService = new UserService
+    vm.mediaService =  new MediaService
 
     $scope.loadMoreMedias = (reload=false) ->
         return if (vm.loadingMore || vm.page >= vm.total_page) 
@@ -45,4 +46,13 @@ ngIG9gag.controller("UserMediasCtrl",
         $scope.videoSource[$index][0].src = $sce.trustAsResourceUrl(videoUrl)
         $scope.videoSource[$index][0].type = "video/mp4"
 
+    $scope.pinMedia = (id) ->
+        vm.mediaService.pinMedia(
+            id
+            (data) ->
+                for i of $scope.medias
+                    if $scope.medias[i].id == id
+                        $scope.medias[i].pinned = data.pinned
+                        return
+        )
 ])

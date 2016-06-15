@@ -8,5 +8,11 @@ Rails.application.routes.draw do
       end
   end
 
+  resources :medias do
+    member do
+        get :pin
+    end
+  end 
+
   get '*path' => 'home#index'
 end

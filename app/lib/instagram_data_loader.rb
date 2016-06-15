@@ -24,18 +24,21 @@ class InstagramDataLoader
             media_url = (m['type'] == 'video' ? m['videos']['standard_resolution']['url'] : m['images']['standard_resolution']['url'])
             caption = m['caption'] ? m['caption']['text'] : nil
             video_poster = (m['type'] == 'video' ? m['images']['standard_resolution']['url'] : nil)
-            Media.create(
-                id: m['id'],
-                type: m['type'],
-                likes: m['likes']['count'],
-                comments: m['comments']['count'],
-                created_time: m['created_time'],
-                link: m['link'],
-                media_url: media_url,
-                caption: caption,
-                tags: m['tags'],
-                video_poster: video_poster
-            )
+            if  !Media.exists?(m['id'])
+                Media.create(
+                    id: m['id'],
+                    type: m['type'],
+                    likes: m['likes']['count'],
+                    comments: m['comments']['count'],
+                    created_time: m['created_time'],
+                    link: m['link'],
+                    media_url: media_url,
+                    caption: caption,
+                    tags: m['tags'],
+                    video_poster: video_poster,
+                    pinned: "0"
+                )
+            end
             User.find(user['id']).add_media(m['id'])
         end
     end

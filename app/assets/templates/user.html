@@ -30,7 +30,7 @@
              ag-infinite-scroll="loadMoreMedias()"
              ag-infiniteScrollDistance="70"
              >
-          <div class="card" ng-repeat="media in medias track by $index">
+          <div ng-class="media.pinned ? 'card pinned' : 'card'"  ng-repeat="media in medias track by $index">
             <div ng-if="media.type == 'image'" class="img" style="background-image: url({{media.media_url}});"></div>
             <div ng-if="media.type == 'video'" class="video">
               <videogular data-ng-init="setVideoSrc($index, media.media_url)">
@@ -63,6 +63,9 @@
                 <div class="count">
                   <i class="glyphicon glyphicon-comment"></i> {{media.comments}}
                 </div>
+              </div>
+              <div>
+                <button ng-click="pinMedia(media.id)"><span ng-show="!media.pinned">pin</span><span ng-show="media.pinned">unpin</span></button>
               </div>
             </div>
           </div>

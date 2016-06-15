@@ -11,6 +11,7 @@ class Media
     value :media_url
     value :caption
     value :video_poster
+    value :pinned
     list :tags
 
     def initialize(id)
@@ -36,9 +37,22 @@ class Media
         media.link = attributes[:link]
         media.media_url = attributes[:media_url]
         media.caption = attributes[:caption]
+        media.pinned = attributes[:pinned]
         media.video_poster = attributes[:video_poster] if attributes[:video_poster]
         attributes[:tags].each do |tag|
             media.tags << tag
         end
+    end
+
+    def isPinned?
+        pinned.value == "1"
+    end
+
+    def pin
+        pinned.value = "1"
+    end
+
+    def unpin
+        pinned.value = "0"
     end
 end
